@@ -1,0 +1,21 @@
+# Visual Studio 프로젝트 파일 무시
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+
+# 빌드 산출물 무시
+*.obj
+*.exe
+*.dll
+*.lib
+*.pdb
+*.idb
+*.ilk
+*.log
+
+# objects
+*.o
+*.out
+
+
+
