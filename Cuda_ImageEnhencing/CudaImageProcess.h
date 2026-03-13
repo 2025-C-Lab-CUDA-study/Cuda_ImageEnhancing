@@ -15,10 +15,12 @@ public:
 	bool StoreImage(void);
 	void Close(void);
 
+	bool BilinearReduce(void);
+	bool BilinearIncrease(void);
 
 private:
 
-	bool applyKawase(uint32_t applyTimes);
+	//bool applyKawase(uint32_t applyTimes);
 
 private:
 
@@ -34,6 +36,11 @@ private:
 	uint8_t* d_rBuf;
 	uint8_t* d_gBuf;
 	uint8_t* d_bBuf;
+
+	uint8_t* d_r2; 
+	uint8_t* d_g2;
+	uint8_t* d_b2;
+
 	size_t pitch;
 
 };

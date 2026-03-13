@@ -23,7 +23,7 @@ namespace Bmp
 		bool result = false;
 
 
-		std::ifstream file("C:/Users/james/source/2026/Graphics/Cuda_ImageEnhencing/lenna.bmp", std::ios::binary);
+		std::ifstream file("C:/Users/james/source/2026/Cuda/Cuda_ImageEnhancing/lenna.bmp", std::ios::binary);
 
 		if (!file)
 		{
