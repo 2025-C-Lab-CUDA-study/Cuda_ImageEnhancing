@@ -1,7 +1,12 @@
 # Visual Studio 프로젝트 파일 무시
-*.vcxproj
-*.vcxproj.filters
-*.vcxproj.user
+*.vcxproj*
+.vs/
+x64/
+*.sln
+
+#빌드 결과
+Debug/
+Release/
 
 # 빌드 산출물 무시
 *.obj
