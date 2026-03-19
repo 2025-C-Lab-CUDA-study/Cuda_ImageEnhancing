@@ -59,9 +59,9 @@ namespace Bmp
 			goto LB_RETURN;
 		}
 
-		*rBuf = (Buf_s*)malloc(sizeof(Buf_s) + sizeof(char) * (bufferSize - 1));
-		*gBuf = (Buf_s*)malloc(sizeof(Buf_s) + sizeof(char) * (bufferSize - 1));
-		*bBuf = (Buf_s*)malloc(sizeof(Buf_s) + sizeof(char) * (bufferSize - 1));
+		*rBuf = (Buf_s*)malloc(sizeof(Buf_s) + sizeof(char) * (bufferSize));
+		*gBuf = (Buf_s*)malloc(sizeof(Buf_s) + sizeof(char) * (bufferSize));
+		*bBuf = (Buf_s*)malloc(sizeof(Buf_s) + sizeof(char) * (bufferSize));
 		(*rBuf)->size = (*gBuf)->size = (*bBuf)->size = bufferSize;
 
 		unsigned int rowSize = BMPROWSIZE(width); 
@@ -80,6 +80,8 @@ namespace Bmp
 			}
 		}
 
+		delete[] tempBuf;
+
 		result = true;
 		
 	LB_RETURN:
@@ -89,7 +91,7 @@ namespace Bmp
 	}
 
 
-	bool StoreRGBs(const char* storeName, unsigned int width, unsigned int height, Buf_s* rBuf, Buf_s* gBuf, Buf_s* bBuf)
+	bool StoreRGBs(const char* storeName, unsigned int width, unsigned int height, Buf_s** rBuf, Buf_s** gBuf, Buf_s** bBuf)
 	{
 		bool result = false;
 
@@ -135,17 +137,23 @@ namespace Bmp
 			for (unsigned int j = 0; j < width; ++j)
 			{
 				unsigned int idx = (height - 1 - i) * width + j;
-				tempBuf[j * 3 + 0] = bBuf->data[idx];
-				tempBuf[j * 3 + 1] = gBuf->data[idx];
-				tempBuf[j * 3 + 2] = rBuf->data[idx];
+				tempBuf[j * 3 + 0] = (*bBuf)->data[idx];
+				tempBuf[j * 3 + 1] = (*gBuf)->data[idx];
+				tempBuf[j * 3 + 2] = (*rBuf)->data[idx];
 			}
 
 			file.write(reinterpret_cast<char*>(tempBuf), rowSize);
 		}
 
+		delete[] tempBuf;
+
 		result = true;
 
 	LB_RETURN:
+
+		free(*rBuf);
+		free(*gBuf);
+		free(*bBuf);
 
 		if (file) { file.close(); }
 

@@ -20,7 +20,7 @@ public:
 
 private:
 
-	//bool applyKawase(uint32_t applyTimes);
+	bool applyKawase(uint32_t applyTimes);
 
 private:
 

@@ -32,5 +32,5 @@ struct BmpInfoHeader_s
 namespace Bmp
 {
 	bool LoadRGBs(Buf_s** rBuf, Buf_s** gBuf, Buf_s** bBuf, unsigned int& width, unsigned int& height);
-	bool StoreRGBs(const char* storeName, unsigned int width, unsigned int heght, Buf_s* rBuf, Buf_s* gBuf, Buf_s* bBuf);
+	bool StoreRGBs(const char* storeName, unsigned int width, unsigned int heght, Buf_s** rBuf, Buf_s** gBuf, Buf_s** bBuf);
 }

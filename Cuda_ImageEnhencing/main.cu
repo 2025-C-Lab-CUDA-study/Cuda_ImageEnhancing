@@ -30,13 +30,7 @@ int main(void)
         return 1;
     }
 
-    if (!imageProcessor.BilinearReduce())
-    {
-        fprintf(stderr, "imageProcessor reduce failed\n");
-        return 1;
-    }
-
-    /*if (!imageProcessor.ImageBlur())
+    if (!imageProcessor.ImageBlur())
     {
         fprintf(stderr, "imageProcessor imageBlur failed\n");
         imageProcessor.Close();
@@ -44,10 +38,11 @@ int main(void)
     }
     if (!imageProcessor.IncreaseResolution())
     {
-        fprintf(stderr, "imageProcessor IncreaseResolution failed\n");
+        fprintf(stderr, "imageprocessor increaseresolution failed\n");
         imageProcessor.Close();
         return 1;
-    }*/
+    }
+
     if (!imageProcessor.StoreImage())
     {
         fprintf(stderr, "imageProcessor StoreImage failed\n");
